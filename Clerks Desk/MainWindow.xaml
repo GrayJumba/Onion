@@ -1,0 +1,88 @@
+﻿<SDControls:SDWindow x:Class="FeesDesk.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:SDControls="clr-namespace:SmartDesk.Controls;assembly=SDLibrary"          
+        xmlns:local="clr-namespace:FeesDesk" Background="{StaticResource MainBackGround}"
+        Title="{StaticResource AppTitle}" WindowState="Maximized" Height="600" Width="1024"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        mc:Ignorable="d" d:DesignWidth="1024" d:DesignHeight="700">
+    <DockPanel>
+        <Grid  DockPanel.Dock="Top">
+            <Menu  BorderBrush="WhiteSmoke" BorderThickness="2">
+                <Menu.Resources>
+                    <ResourceDictionary Source="pack://application:,,,/SDLibrary;component/Style/SDMenu.xaml"/>
+                </Menu.Resources>
+                <MenuItem  Header="FILE" Style="{StaticResource MainMenuItem}">
+                    <MenuItem Command="SDControls:SDWindow.NewCommand"/>
+                    <MenuItem Command="SDControls:SDWindow.SaveCommand"/>
+                    <MenuItem Command="SDControls:SDWindow.PrintCommand"/>
+                    <Separator/>
+                    <MenuItem Command="SDControls:SDWindow.OptionsCommand"/>
+                    <MenuItem Command="SDControls:SDWindow.ExitCommand"/>
+                </MenuItem>
+                <MenuItem Style="{StaticResource MainMenuItem}" Header="EDIT">
+                    <MenuItem Command="Undo"/>
+                    <MenuItem  Command="Redo"/>
+                    <Separator/>
+                    <MenuItem Command="Cut"/>
+                    <MenuItem Command="Copy"/>
+                    <MenuItem Command="Paste"/>
+                    <MenuItem Command="Delete"/>
+                </MenuItem>
+                <MenuItem Header="VIEW" Style="{StaticResource MainMenuItem}" >
+                    <MenuItem Command="local:MainWindow.ReceiptSingularCommand"/>
+                    <MenuItem Command="local:MainWindow.ReceiptTabularCommand"/>
+                    <MenuItem Command="local:MainWindow.FeesRegisterCommand"/>
+                    <MenuItem Command="local:MainWindow.FeesBalancesCommand"/>
+                </MenuItem>
+                <MenuItem Header="TOOLS" Style="{StaticResource MainMenuItem}">
+                    <MenuItem Command="SDControls:SDWindow.ManageUserCommand"/>
+                    <MenuItem  Command="SDControls:SDWindow.ManageDatabaseCommand"/>
+                </MenuItem>
+                <MenuItem Header="HELP" Style="{StaticResource MainMenuItem}">
+                    <MenuItem  Command="SDControls:SDWindow.ManualCommand"/>
+                    <MenuItem  Header="Support"  >
+                        <MenuItem  Command="SDControls:SDWindow.QuestionCommand"/>
+                        <MenuItem  Command="SDControls:SDWindow.ForumsCommand"/>
+                    </MenuItem>
+                    <MenuItem  Header="Feedback"  >
+                        <MenuItem Command="SDControls:SDWindow.SendSmileCommand"/>
+                        <MenuItem Command="SDControls:SDWindow.SendFrownCommand"/>
+                        <MenuItem Command="SDControls:SDWindow.ReportBugCommand"/>
+                    </MenuItem>
+                    <MenuItem Command="SDControls:SDWindow.LicenseCommand"/>
+                    <MenuItem Command="SDControls:SDWindow.AboutCommand"/>
+                </MenuItem>
+            </Menu>
+        </Grid>
+        <SDControls:SDStatusBar DockPanel.Dock="Bottom"></SDControls:SDStatusBar>
+        <Grid  Background="Transparent" >
+            <metro:MetroAnimatedTabControl Name="MainTabControl" TabStripPlacement="Left" BorderBrush="White">
+                <metro:MetroTabItem Name="ReceiptsTab" Header="Receipts">
+                    <local:Receipts/>
+                </metro:MetroTabItem>
+                <metro:MetroTabItem Header="Invoices" Name="InvoicesTab">
+                    <local:Invoice/>
+                </metro:MetroTabItem>
+                <metro:MetroTabItem Header="Credits" Name="CreditsTab">
+                    <local:Credit/>
+                </metro:MetroTabItem>
+                <metro:MetroTabItem Header="Structure" Name="StructureTab">
+                    <local:FeeAmount/>
+                </metro:MetroTabItem>
+                <metro:MetroTabItem Header="Statement" Name="StatementTab">
+                    <local:Statement/>
+                </metro:MetroTabItem>
+                <metro:MetroTabItem Header="Balances" Name="BalancesTab">
+                    <local:Balances/>
+                </metro:MetroTabItem>
+                <metro:MetroTabItem Header="Register" Name="RegisterTab">
+                    <local:Register/>
+                </metro:MetroTabItem>
+            </metro:MetroAnimatedTabControl>
+        </Grid>
+        
+    </DockPanel>
+</SDControls:SDWindow>

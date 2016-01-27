@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="AcademicsDesk.Pages.JuniorSubjectSelection"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            mc:Ignorable="d" 
+            xmlns:SDControls="clr-namespace:SmartDesk.Controls;assembly=SDLibrary"
+            xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+            xmlns:sys="clr-namespace:System;assembly=mscorlib"
+            xmlns:MySQLHandler="clr-namespace:AcademicsDesk.MySQLHandler"
+            d:DesignHeight="700" d:DesignWidth="1024" IsVisibleChanged="JuniorSubjectSelection_IsVisibleChanged">
+
+    <metro:MetroAnimatedTabControl TabStripPlacement="Bottom">
+        <metro:MetroTabItem x:Name="TabularView" Header="Table">
+            <Grid Background="WhiteSmoke">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0"  Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="0.4*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <SDControls:ExtendedStudentPicker Name="studentPicker"  Grid.Column="0"  HorizontalAlignment="Stretch"    Margin="0,0,10,0"/>
+                    <SDControls:AdvancedSubjectPicker Grid.Column="1" Name="advancedSubjectPicker" ></SDControls:AdvancedSubjectPicker>
+                </Grid>
+                <Grid Grid.Row="1" Background="#F0F0F0">
+                    <DataGrid Name="SubjectSelectiontDg" ColumnWidth="*" AutoGenerateColumns="False" ItemsSource="{Binding}"   HorizontalAlignment="Stretch"  RowHeaderWidth="20"  Margin="5" VerticalAlignment="Stretch" GridLinesVisibility="All"   CanUserAddRows="False"  CanUserDeleteRows="False" CurrentCellChanged="SubjectSelectiontDg_CurrentCellChanged"  CellEditEnding="SubjectSelectiontDg_CellEditEnding">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="adm no" Binding="{Binding admno}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Name" Binding="{Binding name}" IsReadOnly="True"/>
+                            <DataGridCheckBoxColumn Header="Doing" Binding="{Binding doing}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Grid>
+        </metro:MetroTabItem>
+        <metro:MetroTabItem x:Name="SingleView" Header="Single">
+            <Grid Background="WhiteSmoke">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0"  Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2.5*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <SDControls:ExtendedStudentPicker Name="studentPicker2"   Grid.Column="0"   HorizontalAlignment="Stretch"   Margin="10,0,10,0"/>
+                </Grid>
+                <Grid Grid.Row="1" Background="#F0F0F0">
+                    <DataGrid Name="studentSelectionDg" Margin="300,70"  ColumnWidth="*" ItemsSource="{Binding}"  AutoGenerateColumns="False" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" CanUserAddRows="False" CanUserDeleteRows="False" GridLinesVisibility="All"   >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Subject" IsReadOnly="True" Binding="{Binding subject}"></DataGridTextColumn>
+                            <DataGridCheckBoxColumn Header="Doing" Binding="{Binding doing}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Grid>
+        </metro:MetroTabItem>
+    </metro:MetroAnimatedTabControl>
+    
+</UserControl>

@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="AcademicsDesk.Pages.StudentTrend"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:MySQLHandler="clr-namespace:AcademicsDesk.MySQLHandler"
+             xmlns:common="clr-namespace:SmartDesk.Controls;assembly=SDLibrary"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             xmlns:charts="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart"
+              d:DesignHeight="300" d:DesignWidth="1000" Background="WhiteSmoke"  IsVisibleChanged="UserControl_IsVisibleChanged" >
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"  Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1.5*"/>
+            </Grid.ColumnDefinitions>
+            <common:ExtendedStudentPicker  Name="student_picker"></common:ExtendedStudentPicker>
+        </Grid>
+        <Grid x:Name="StudentTrendGrid" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <common:Header Grid.Row="0"/>
+            <ScrollViewer Grid.Row="1" >
+                <StackPanel>
+                    <charts:ClusteredColumnChart Margin="5,5,40,20" Height="500"  ChartTitle="Performance Trend"  ChartSubTitle="Average mark against Terms"   >
+                        <charts:ClusteredColumnChart.Series >
+                            <charts:ChartSeries x:Name="term_chart"  SeriesTitle="Terms" ItemsSource="{Binding Path=term_points}"  DisplayMember="X" ValueMember="Y"/>
+                        </charts:ClusteredColumnChart.Series>
+                    </charts:ClusteredColumnChart>
+                    <charts:ClusteredColumnChart Margin="5,5,40,20"  Height="500" ChartTitle="Performance Trend"  ChartSubTitle="Average mark against Exam"   >
+                        <charts:ClusteredColumnChart.Series >
+                            <charts:ChartSeries x:Name="exam_chart"  SeriesTitle="Exams" ItemsSource="{Binding Path=exam_points}" DisplayMember="X" ValueMember="Y"/>
+                        </charts:ClusteredColumnChart.Series>
+                    </charts:ClusteredColumnChart>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</UserControl>

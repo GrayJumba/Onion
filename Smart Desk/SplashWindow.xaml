@@ -1,0 +1,28 @@
+﻿<metro:MetroWindow x:Class="SmartDesk.SplashWindow"
+        Name="splash"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        GlowBrush="#777777"					  
+        xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"         
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Height="300" Width="550" ShowTitleBar="False" ResizeMode="NoResize" Background="WhiteSmoke"  ShowInTaskbar="False" WindowStartupLocation="CenterScreen"  Closing="splash_Closing">
+
+
+    <Grid  >
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/bg.jpg">
+
+            </ImageBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <metro:ProgressRing  Foreground="#FFF" IsActive="True" Margin="408,106,55,38" Height="128" Width="81" Grid.RowSpan="2"/>
+        <Label Foreground="#000" FontSize="15" Content="Loading..." FontFamily="lucida calligraphy" Margin="330,199,41,38"></Label>
+        <Label Content="Smart Desk" FontWeight="Bold" Foreground="BlueViolet"  FontSize="50" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Height="86" Width="298" Grid.RowSpan="2"/>
+        <Image HorizontalAlignment="Left" Height="30" Margin="10,10,0,0" VerticalAlignment="Top" Width="25" />
+        <Label Content="" Foreground="White" FontSize="30" HorizontalAlignment="Left" Margin="167,73,0,0" VerticalAlignment="Top"/>
+        <Image Source="Images/logo.png" Stretch="Fill" Margin="10,63,427,-18" Grid.Row="1"/>
+    </Grid>
+</metro:MetroWindow>
+

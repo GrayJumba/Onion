@@ -1,0 +1,88 @@
+﻿<Window x:Class="SmartDesk.MessageWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="Smart Desk - Send us a message" Height="600" Width="600"
+        Background="WhiteSmoke" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Closing="Window_Closing">
+    <Grid>
+        <Label Name="instruction_label" Content="We appreciate your feedback." HorizontalAlignment="Stretch" Margin="10,10,10,10" VerticalAlignment="Top" />
+        <TextBox AcceptsReturn="True" TextWrapping="Wrap" BorderBrush="LightGray" Name="feedback_text" HorizontalAlignment="Stretch" Height="167" Margin="10,41,10,10" VerticalAlignment="Top" >
+            <TextBox.Style>
+                <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}"  >
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Top" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="Type here" Foreground="Gray" Background="White" Height="200" Width="700" />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}"/>
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White"  />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <CheckBox Name="screenshot_check" Content="Include a screenshot." HorizontalAlignment="Left" Margin="10,225,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <Border BorderThickness="1" BorderBrush="LightGray"  Height="144" Margin="10,80,10,10" HorizontalAlignment="Stretch">
+            <Image Name="screenshot_img"  HorizontalAlignment="Stretch"  VerticalAlignment="Top">
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsChecked,ElementName=screenshot_check}" Value="False">
+                                <Setter Property="Visibility" Value="Hidden"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+        </Border>
+        <CheckBox Name="email_check"  Content="Include email" HorizontalAlignment="Left" Margin="10,397,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <TextBox Name="email_text" HorizontalAlignment="Stretch" Height="23" Margin="125,392,10,10" TextWrapping="Wrap"  VerticalAlignment="Top" Width="459">
+            <TextBox.Style>
+                <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+                    <Style.Resources>
+                        <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                            <VisualBrush.Visual>
+                                <Label Content="someone@domain.com" Foreground="Gray" Background="White"  Width="700" />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </Style.Resources>
+                    <Style.Triggers>
+                        <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}"/>
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="Background" Value="White"  />
+                        </Trigger>
+                        <DataTrigger Binding="{Binding IsChecked ,ElementName=email_check}" Value="False">
+                            <Setter Property="IsEnabled" Value="False"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        <TextBlock HorizontalAlignment="Stretch" Margin="13,434,10,10" TextWrapping="Wrap" Text="Thank you for taking your time to write to us! We may not be able to respond to each piece of feedback, but we will make sure its reviewed.For any further information you can contact us on phone +254 713 166 021 or send an email to info@smartdesk.onion.co.ke" VerticalAlignment="Top" Height="59"/>
+        <Button Name="send_button" Content="Send"  HorizontalAlignment="Left" Margin="423,516,0,0" VerticalAlignment="Top" Width="132" Click="send_button_Click">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}"  >
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text ,ElementName=feedback_text}" Value="{x:Static sys:String.Empty}">
+                            <Setter Property="IsEnabled" Value="False"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+    </Grid>
+</Window>

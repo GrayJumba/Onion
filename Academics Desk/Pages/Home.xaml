@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="AcademicsDesk.Pages.Home"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AcademicsDesk.Pages"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1100" Background="WhiteSmoke">
+
+    <UserControl.Resources>
+        <Style TargetType="metro:Tile">
+            <Setter  Property="Height" Value="150"/>
+            <Setter  Property="Width" Value="150"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel>
+            <Label Content="Quick Start" Margin="55,0,0,0" Foreground="DodgerBlue" FontSize="30"/>
+        </StackPanel>
+        <StackPanel Margin="50,50,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <metro:Tile Grid.Row="0" Grid.Column="0" Title="EXAMS"/>
+                <metro:Tile Grid.Row="0" Grid.Column="1" Title="MARKS ENTRY"/>
+                <metro:Tile Grid.Row="0" Grid.Column="2" Title="ANALYSIS"/>
+                <metro:Tile Grid.Row="0" Grid.Column="3" Title="REPORT CARDS"/>
+                <metro:Tile Grid.Row="0" Grid.Column="4" Title="SETTINGS"/>
+
+
+            </Grid>
+            <StackPanel Margin="50,50,0,0" Orientation="Horizontal">
+                <metro:FlipView  Background="DarkGray" Height="200" Width="600"  VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.ColumnSpan="3" Margin="0,0,0,-57" >
+                    <metro:FlipView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Background="{Binding Path=BackGround}">
+                                <Rectangle Margin="0, 0, 10, 0" Width="50" Height="50">
+                                    <Rectangle.Fill>
+                                        <ImageBrush ImageSource="{Binding Path=Image}"/>
+                                    </Rectangle.Fill>
+                                </Rectangle>
+                            </Grid>
+                        </DataTemplate>
+                    </metro:FlipView.ItemTemplate>
+                </metro:FlipView>
+
+                <TextBlock Margin="30" FontSize="18" Foreground="DodgerBlue" HorizontalAlignment="Right" Height="36">
+                    Onion Smart Solutions 2015
+                    
+                </TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

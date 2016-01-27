@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="AcademicsDesk.Pages.Trend"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:MySQLHandler="clr-namespace:AcademicsDesk.MySQLHandler"
+             xmlns:common="clr-namespace:SmartDesk.Controls;assembly=SDLibrary"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d" 
+             xmlns:pages="clr-namespace:AcademicsDesk.Pages"
+             d:DesignHeight="300" d:DesignWidth="1000" Background="WhiteSmoke" >
+    <metro:MetroAnimatedTabControl>
+        <metro:MetroTabItem Header="Student">
+            <pages:StudentTrend/>
+        </metro:MetroTabItem>
+        <metro:MetroTabItem Header="Stream">
+            <pages:StreamTrend/>
+        </metro:MetroTabItem>
+        <metro:MetroTabItem Header="Class">
+            <pages:ClassTrend/>
+        </metro:MetroTabItem>
+        <metro:MetroTabItem Header="School">
+            <pages:SchoolTrend/>
+        </metro:MetroTabItem>
+        <metro:MetroTabItem Header="Summary">
+            <pages:SummaryTrend/>
+        </metro:MetroTabItem>
+    </metro:MetroAnimatedTabControl>
+</UserControl>

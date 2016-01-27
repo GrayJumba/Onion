@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="SmartDesk.Controls.StreamPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:SDControls="clr-namespace:SmartDesk.Controls"
+             mc:Ignorable="d"
+             d:DesignHeight="30" d:DesignWidth="700">
+        <ComboBox Name="comboBox"  Grid.Column="0"  IsEditable="True" x:FieldModifier="public" metro:TextBoxHelper.Watermark="Select stream"  HorizontalAlignment="Stretch"   DisplayMemberPath="ufi" SelectedValuePath="dfi" />
+
+</UserControl>

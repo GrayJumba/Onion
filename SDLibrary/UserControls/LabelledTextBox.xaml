@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="SmartDesk.Controls.LabelledTextBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="300" Name="user_control" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{Binding Path=Width, ElementName=label}"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>  
+        <Label Name="label"  Grid.Column="0" HorizontalAlignment="Right"></Label>
+        <TextBox Name="text_box" Text="{Binding Path=Value,ElementName=user_control}"  Grid.Column="1"></TextBox>
+    </Grid>
+</UserControl>

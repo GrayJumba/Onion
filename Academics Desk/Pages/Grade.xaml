@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="AcademicsDesk.Pages.Grade"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:SDControls="clr-namespace:SmartDesk.Controls;assembly=SDLibrary"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="500"/>
+        </Grid.RowDefinitions>
+        <Grid  Grid.Row="0" >
+            <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <SDControls:SubjectPicker Name="subject_picker" Grid.Column="0" Margin="10,0" selected_subject_code="101"></SDControls:SubjectPicker>
+            <SDControls:FormPicker Name="form_picker" Grid.Column="1" SelectedForm="4"></SDControls:FormPicker>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <GroupBox Grid.Column="0"   Header="Subject Grades" Margin="10">
+                <DataGrid Name="SubGrade_DG" Grid.Row="1" ColumnWidth="*" AutoGenerateColumns="False" GridLinesVisibility="All" ItemsSource="{Binding}"  CanUserAddRows="False" CanUserDeleteRows="False" CellEditEnding="SubGrade_DG_CellEditEnding"  CurrentCellChanged="SubGrade_DG_CurrentCellChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Points" IsReadOnly="True" Binding="{Binding points}"/>
+                        <DataGridTextColumn Header="GRADE" IsReadOnly="True" Binding="{Binding grade}"/>
+                        <metro:DataGridNumericUpDownColumn Header="From"  Binding="{Binding lower_bound}" />
+                        <DataGridTextColumn Header="TO" IsReadOnly="True" Binding="{Binding upper_bound}" />
+                        <DataGridTextColumn Header="COMMENT" Width="2*" Binding="{Binding comment}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+        </GroupBox>
+            <GroupBox Grid.Column="1"   Header="Overall Grades" Margin="10">
+            <Grid>
+                <DataGrid Name="Overall_DG" ColumnWidth="*" ItemsSource="{Binding}"  CanUserAddRows="False" CanUserDeleteRows="False"   AutoGenerateColumns="False" GridLinesVisibility="All" CellEditEnding="Overall_DG_CellEditEnding"  >
+                    <DataGrid.Columns>
+                            <DataGridTextColumn Header="Points" IsReadOnly="True" Binding="{Binding points}"/>
+                            <DataGridTextColumn Header="GRADE" IsReadOnly="True" Binding="{Binding grade}"/>
+                            <metro:DataGridNumericUpDownColumn Header="From"  Binding="{Binding lower_bound}" />
+                            <DataGridTextColumn Header="TO" IsReadOnly="True" Binding="{Binding upper_bound}" />
+                            <DataGridTextColumn Header="COMMENT" Width="2*" Binding="{Binding comment}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </GroupBox>
+        </Grid>
+    </Grid>
+</UserControl>

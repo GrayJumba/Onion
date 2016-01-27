@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="FeesDesk.Register"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             xmlns:SDControls="clr-namespace:SmartDesk.Controls;assembly=SDLibrary"
+             xmlns:SDMySQLHandler="clr-namespace:SmartDesk.MySQLHandler;assembly=SDLibrary"	  					  
+              d:DesignHeight="700" d:DesignWidth="1024">
+    <UserControl.Resources>
+        <SDMySQLHandler:SDObjectIDs  x:Key="SDObjectIDsClass"/>
+    </UserControl.Resources>
+    <Grid Background="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"  Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <SDControls:ExtendedStudentPicker Grid.Column="0" Margin="5,0"></SDControls:ExtendedStudentPicker>
+            <SDControls:YearPicker Grid.Column="1" Margin="5,0"></SDControls:YearPicker>
+        </Grid>
+        <Grid Grid.Row="1" Background="#F0F0F0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <DataGrid Grid.Row="0"  Name="Arrears" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Stretch"  >
+            </DataGrid>
+            <DataGrid Grid.Row="1"  Name="Totals" HorizontalAlignment="Stretch" Margin="5" VerticalAlignment="Stretch"  >
+            </DataGrid>
+        </Grid>
+    </Grid>
+    
+</UserControl>

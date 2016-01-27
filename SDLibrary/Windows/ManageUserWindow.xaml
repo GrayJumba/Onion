@@ -1,0 +1,18 @@
+﻿<Window x:Class="SmartDesk.ManageUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Manage User" Height="373.196" Width="573.935"
+        Background="WhiteSmoke" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" >
+    <Grid>
+        <Label Name="username_label" Content="User: " FontSize="15" HorizontalAlignment="Left" Margin="224,50,0,0" VerticalAlignment="Top"/>
+        <PasswordBox  Name="old_passwordBox" HorizontalAlignment="Left" Margin="199,111,0,0" VerticalAlignment="Top" Width="203"  PasswordChanged="old_passwordBox_PasswordChanged"/>
+        <Label Content="Old Password" HorizontalAlignment="Left" Margin="79,111,0,0" VerticalAlignment="Top"/>
+        <Label Content="New Password" HorizontalAlignment="Left" Margin="79,178,0,0" VerticalAlignment="Top"/>
+        <PasswordBox Name="new_passwordBox" HorizontalAlignment="Left" Margin="199,179,0,0" VerticalAlignment="Top" Width="203" PasswordChanged="new_passwordBox_PasswordChanged"/>
+        <Label Content="Confirm New Password" HorizontalAlignment="Left" Margin="61,229,0,0" VerticalAlignment="Top"/>
+        <PasswordBox Name="confirm_passwordBox" HorizontalAlignment="Left" Margin="199,229,0,0" VerticalAlignment="Top" Width="203" PasswordChanged="confirm_passwordBox_PasswordChanged" />
+        <Button Name="ok_button" Content="OK" IsEnabled="False" HorizontalAlignment="Left" Margin="327,290,0,0" VerticalAlignment="Top" Width="75"  Click="ok_button_Click" />
+        <Button Name="cancel_button" Content="Cancel" HorizontalAlignment="Left" Margin="439,290,0,0" VerticalAlignment="Top" Width="75" Click="cancel_button_Click"/>
+
+    </Grid>
+</Window>

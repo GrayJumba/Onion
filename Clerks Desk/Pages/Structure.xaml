@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="FeesDesk.FeeAmount"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:SDControls="clr-namespace:SmartDesk.Controls;assembly=SDLibrary"
+            xmlns:thisNamespace="clr-namespace:FeesDesk"
+            Name="StructurePage"  
+            mc:Ignorable="d"  d:DesignHeight="700" d:DesignWidth="1024" IsVisibleChanged="UserControl_IsVisibleChanged" >
+    <Grid Background="WhiteSmoke">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" VerticalAlignment="Top" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="7*"/>
+            </Grid.ColumnDefinitions>
+            <SDControls:YearPicker Name="year_picker" SelectedDate="{x:Static sys:DateTime.Today}"></SDControls:YearPicker>
+        </Grid>
+        <Grid x:Name="StructureGrid" Grid.Row="1" Background="#F0F0F0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Column="0" Grid.Row="0" Margin="20,40">
+                <Label Content="Form 1" FontSize="14"></Label>
+                <DataGrid Name="Form1Dg" CurrentCellChanged="Form1Dg_CurrentCellChanged" CellEditEnding="Form1Dg_CellEditEnding" AutoGenerateColumns="False" GridLinesVisibility="All"  ItemsSource="{Binding}"  CanUserAddRows="False" CanUserDeleteRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn  Header="Term" Width="1*" Binding="{Binding term}" IsReadOnly="True"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Amount"  Width="1*" Binding="{Binding amount}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Label Name="Form1TotalLabel" Content="Total 0.00" FontSize="14" HorizontalAlignment="Right" Margin="20,0"></Label>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="0" Margin="20,40">
+                <Label Content="Form 2" FontSize="14"></Label>
+                <DataGrid Name="Form2Dg" AutoGenerateColumns="False" GridLinesVisibility="All"  ItemsSource="{Binding}"  CanUserAddRows="False" CanUserDeleteRows="False" CellEditEnding="Form2Dg_CellEditEnding">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn  Header="Term" Width="1*" Binding="{Binding term}" IsReadOnly="True"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Amount"  Width="1*" Binding="{Binding amount}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Label Name="Form2TotalLabel" Content="Total 0.00" FontSize="14" HorizontalAlignment="Right" Margin="20,0"></Label>
+            </StackPanel>
+            <StackPanel Grid.Column="0" Grid.Row="1" Margin="20,40">
+                <Label Content="Form 3" FontSize="14"></Label>
+                <DataGrid Name="Form3Dg" AutoGenerateColumns="False" GridLinesVisibility="All"   ItemsSource="{Binding}"  CanUserAddRows="False" CanUserDeleteRows="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn  Header="Term" Width="1*" Binding="{Binding term}" IsReadOnly="True"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Amount"  Width="1*" Binding="{Binding amount}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Label Name="Form3TotalLabel" Content="Total 0.00" FontSize="14" HorizontalAlignment="Right" Margin="20,0"></Label>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="1" Margin="20,40">
+                <Label Content="Form 4" FontSize="14"></Label>
+                <DataGrid Name="Form4Dg" AutoGenerateColumns="False" GridLinesVisibility="All"  ItemsSource="{Binding}"  CanUserAddRows="False" CanUserDeleteRows="False" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn  Header="Term" Width="1*" Binding="{Binding term}" IsReadOnly="True"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Amount"  Width="1*" Binding="{Binding amount}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Label Name="Form4TotalLabel" Content="Total 0.00" FontSize="14" HorizontalAlignment="Right" Margin="20,0"></Label>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

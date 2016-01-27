@@ -1,0 +1,71 @@
+﻿ <UserControl x:Class="AcademicsDesk.Pages.SummaryTrend"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:MySQLHandler="clr-namespace:AcademicsDesk.MySQLHandler"
+             xmlns:common="clr-namespace:SmartDesk.Controls;assembly=SDLibrary"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+              xmlns:charts="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart"
+              d:DesignHeight="300" d:DesignWidth="1000" Background="WhiteSmoke" IsVisibleChanged="UserControl_IsVisibleChanged" >
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"  Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <common:YearPicker Name="year_picker" Margin="5,0"></common:YearPicker>
+        </Grid>
+        <Grid x:Name="SummaryTrendGrid" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <common:Header Grid.Row="0"/>
+            <ScrollViewer Grid.Row="1" >
+                <Grid Height="1300">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <charts:ClusteredColumnChart Margin="5,5,40,20" Grid.Column="0" Grid.Row="0"  ChartTitle="Form 1 Performance Trend"  ChartSubTitle="Average mark against Terms"   >
+                        <charts:ClusteredColumnChart.Series >
+                            <charts:ChartSeries x:Name="term_chart1"  SeriesTitle="Terms" ItemsSource="{Binding}"  DisplayMember="X" ValueMember="Y"/>
+                        </charts:ClusteredColumnChart.Series>
+                    </charts:ClusteredColumnChart>
+                    <charts:ClusteredColumnChart Margin="5,5,40,20"  Grid.Column="1" Grid.Row="0" ChartTitle="Form 2 Performance Trend"  ChartSubTitle="Average mark against Terms"   >
+                        <charts:ClusteredColumnChart.Series >
+                            <charts:ChartSeries x:Name="term_chart2"  SeriesTitle="Terms" ItemsSource="{Binding}"  DisplayMember="X" ValueMember="Y"/>
+                        </charts:ClusteredColumnChart.Series>
+                    </charts:ClusteredColumnChart>
+                    <charts:ClusteredColumnChart Margin="5,5,40,20"  Grid.Column="0" Grid.Row="1" ChartTitle="Form 3 Performance Trend"  ChartSubTitle="Average mark against Terms"   >
+                        <charts:ClusteredColumnChart.Series >
+                            <charts:ChartSeries x:Name="term_chart3"  SeriesTitle="Terms" ItemsSource="{Binding}"  DisplayMember="X" ValueMember="Y"/>
+                        </charts:ClusteredColumnChart.Series>
+                    </charts:ClusteredColumnChart>
+                    <charts:ClusteredColumnChart Margin="5,5,40,20"  Grid.Column="1" Grid.Row="1" ChartTitle="Form 4 Performance Trend"  ChartSubTitle="Average mark against Terms"   >
+                        <charts:ClusteredColumnChart.Series >
+                            <charts:ChartSeries x:Name="term_chart4"  SeriesTitle="Terms" ItemsSource="{Binding}"  DisplayMember="X" ValueMember="Y"/>
+                        </charts:ClusteredColumnChart.Series>
+                    </charts:ClusteredColumnChart>
+                    <charts:ClusteredColumnChart Margin="5,5,40,20" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"  ChartTitle="Overall Performance Trend"  ChartSubTitle="Average mark against Terms"   >
+                        <charts:ClusteredColumnChart.Series >
+                            <charts:ChartSeries x:Name="term_chart5"  SeriesTitle="Terms" ItemsSource="{Binding}"  DisplayMember="X" ValueMember="Y"/>
+                        </charts:ClusteredColumnChart.Series>
+                    </charts:ClusteredColumnChart>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</UserControl>

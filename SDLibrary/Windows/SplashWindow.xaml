@@ -1,0 +1,18 @@
+﻿<controls:MetroWindow x:Class="SmartDesk.SplashWindow"
+        Name="splash"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        GlowBrush="#777777"					  
+        xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"         
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Height="300" Width="550" Background="{StaticResource MainBrush}" ShowTitleBar="False" ResizeMode="NoResize"   ShowInTaskbar="False" WindowStartupLocation="CenterScreen"   >
+
+    <Grid >
+        <controls:ProgressRing  Foreground="#FFFFFF" IsActive="True" Margin="420,130,50,0" Height="128" Width="49"/>
+        <Label Foreground="#FFFFFF" FontSize="15" Content="Loading..." FontFamily="lucida calligraphy" Margin="330,199,41,38"></Label>
+        <TextBlock Foreground="#FFFFFF"  Text="© Copyright 2015. Onion Smart Solutions. All rights reserved." Margin="10,265,0,0"/>
+        <Label Content="Smart Desk" FontWeight="Bold" Foreground="White" FontSize="45" HorizontalAlignment="Left" Margin="155,9,0,0" VerticalAlignment="Top" Height="59" />
+        <Image HorizontalAlignment="Left" Height="30" Margin="10,10,0,0" VerticalAlignment="Top" Width="25" />
+        <Label Name="title_lable" Content="{DynamicResource AppTitle}" Foreground="White" FontSize="30" HorizontalAlignment="Center" Margin="0,73" VerticalAlignment="Top"/>
+    </Grid>
+</controls:MetroWindow>
+

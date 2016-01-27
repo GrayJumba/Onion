@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="AcademicsDesk.Pages.SubjectTeachers"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:SDControls="clr-namespace:SmartDesk.Controls;assembly=SDLibrary"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="1000" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="500"/>
+        </Grid.RowDefinitions>
+        <Grid  Grid.Row="0" >
+            <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <SDControls:StreamPicker Name="stream_picker" Grid.Column="0" Margin="10,0" ></SDControls:StreamPicker>
+        </Grid>
+        <Grid Grid.Row="1" Margin="200,5,200,0"  MinHeight="500">
+            <GroupBox   Header="Edit Subject Teachers" Margin="10">
+                <DataGrid Name="SubjectTeacher_DG" Grid.Row="1" ColumnWidth="*" AutoGenerateColumns="False" GridLinesVisibility="All" ItemsSource="{Binding}"  CanUserAddRows="False" CanUserDeleteRows="False" CellEditEnding="SubjectTeacher_DG_CellEditEnding">
+                    <DataGrid.Resources>
+                        <DataTemplate  x:Key="teacherPickerTemplate">
+                            <SDControls:TeacherPicker>
+                                <SDControls:TeacherPicker.ComboBoxStyle>
+                                    <Style TargetType="ComboBox">
+                                        <Setter Property="Text"  Value="{Binding teacher_ufi}" ></Setter>
+                                        <Setter Property="BorderThickness"  Value="0"></Setter>
+                                    </Style>
+                                </SDControls:TeacherPicker.ComboBoxStyle>
+                            </SDControls:TeacherPicker>
+                        </DataTemplate>
+                        <DataTemplate x:Key="teacherTemplate">
+                            <TextBlock Text="{Binding teacher_ufi}">
+                            </TextBlock>
+                        </DataTemplate>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Subject" IsReadOnly="True" Binding="{Binding subject_abbrev}"/>
+                        <DataGridTemplateColumn Header="Subject Teacher" CellTemplate="{StaticResource teacherTemplate}"  CellEditingTemplate="{StaticResource teacherPickerTemplate}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+        </Grid>
+    </Grid>
+</UserControl>

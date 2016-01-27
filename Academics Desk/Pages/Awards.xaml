@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="AcademicsDesk.Pages.Awards"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:MySQLHandler="clr-namespace:AcademicsDesk.MySQLHandler"
+             xmlns:charts="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart"
+             xmlns:common="clr-namespace:SmartDesk.Controls;assembly=SDLibrary"
+             xmlns:local="clr-namespace:AcademicsDesk.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Name="resultSlip_usercontrol"
+             xmlns:custom="clr-namespace:CustomControls;assembly=SDLibrary"
+             d:DesignHeight="300" d:DesignWidth="1000" Background="WhiteSmoke" IsVisibleChanged="resultSlip_usercontrol_IsVisibleChanged" >
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"  Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <common:ExtendedStreamPicker Name="stream_picker" Margin="5,0"></common:ExtendedStreamPicker>
+            <common:ExtendedExamPicker Name="examPicker" Grid.Column="1" Margin="5,0"></common:ExtendedExamPicker>
+        </Grid>
+        <Grid x:Name="AwardsGrid" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <common:Header Grid.Row="0"/>
+            <ScrollViewer Grid.Row="1" >
+                <StackPanel>
+                    <custom:MultiComboBox />
+                    <GroupBox Header="Top Students" MinHeight="200" Margin="20">
+                        <DataGrid Name="topStudentsDg" ColumnWidth="*"  ItemsSource="{Binding}"  AutoGenerateColumns="False" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" IsReadOnly="True" GridLinesVisibility="Horizontal"   >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Admno" Binding="{Binding admno}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Name" Binding="{Binding name}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Average %" Binding="{Binding average}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Grade" Binding="{Binding average_grade}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Aggr CLuster Grade" Binding="{Binding agg_cluster_grade}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Position In stream" Binding="{Binding stream_position}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Position In Class" Binding="{Binding class_position}"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
+                    <GroupBox Header="Top Students Per Subject" MinHeight="200" Margin="20">
+                        <DataGrid Name="topStudentPerSubjectDg" ColumnWidth="*"  ItemsSource="{Binding}"  AutoGenerateColumns="False" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" IsReadOnly="True" GridLinesVisibility="Horizontal"   >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Admno" Binding="{Binding admno}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Name" Binding="{Binding name}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Top In" Binding="{Binding subject}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Mark %" Binding="{Binding marks}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Grade" Binding="{Binding grade}"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
+                    <GroupBox Header="Most Improved Students" MinHeight="200" Margin="20">
+                        <DataGrid Name="mostImprovedDg" ColumnWidth="*"  ItemsSource="{Binding}"  AutoGenerateColumns="False" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" IsReadOnly="True" GridLinesVisibility="Horizontal"   >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Admno" Binding="{Binding admno}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Name" Binding="{Binding name}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Average %" Binding="{Binding average}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Grade" Binding="{Binding average_grade}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Aggr Cluster Grade" Binding="{Binding agg_cluster_grade}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Improvement" Binding="{Binding improvement}"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</UserControl>

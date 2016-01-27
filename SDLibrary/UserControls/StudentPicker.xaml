@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="SmartDesk.Controls.StudentPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d"  Name="studentPicker"
+             d:DesignHeight="30" d:DesignWidth="300">
+        <Grid  HorizontalAlignment="Stretch"  Name="studentPanel">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Name="button_section" Width="*"></ColumnDefinition>
+                <ColumnDefinition  Width="10*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border BorderBrush="LightGray" HorizontalAlignment="Stretch"  Grid.Column="0" BorderThickness="1,1,0,1">
+                <Grid HorizontalAlignment="Stretch" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Style="{x:Null}" Background="#F0F0F0" Name="previous_button" BorderThickness="0"  Grid.Row="0"   VerticalContentAlignment="Center" Padding="0" ToolTip="Previous Student" HorizontalAlignment="Stretch"  Click="previous_button_Click">
+                        <Polygon Points="5,4 10,10, 0,10"  Fill="Gray" />
+                    </Button>
+                    <Button Style="{x:Null}" Background="#F0F0F0" Name="next_button" BorderThickness="0"  Grid.Row="1"   Padding="0" VerticalContentAlignment="Center" ToolTip="Next Student" HorizontalAlignment="Stretch"      Click="next_button_Click">
+                        <Polygon Points="0,0 5,6, 10,0" Fill="Gray" />
+                    </Button>
+                </Grid>
+            </Border>
+        <ComboBox Grid.Column="1" Name="Student_Combo" x:FieldModifier="public" metro:TextBoxHelper.Watermark="Select student" HorizontalAlignment="Stretch"   IsEditable="True"  DisplayMemberPath="ufi" SelectedValuePath="dfi" />
+    </Grid>
+</UserControl>

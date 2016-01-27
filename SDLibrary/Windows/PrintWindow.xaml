@@ -1,0 +1,33 @@
+﻿<metro:MetroWindow x:Class="SDLibrary.Windows.PrintWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowState="Normal" ShowCloseButton="True" ResizeMode="NoResize"
+             Height="500" Width="800" Background="Gray" Title="SmartDesk Printer">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        
+        <Button  Grid.Column="0" Grid.Row="0" Height="50" Width="200" Content="PRINT" FontSize="20"/>
+        <metro:DropDownButton Grid.Column="0" Grid.Row="1" Height="50" Width="200"  x:Name="Printers" metro:TextBoxHelper.Watermark="Select Printer" FontSize="20"/>
+        <metro:DropDownButton Grid.Column="0" Grid.Row="2" Height="50" Width="200"  x:Name="PageSizes" metro:TextBoxHelper.Watermark="Select Printer" FontSize="20"/>
+        <Border Width="300" BorderBrush="White" BorderThickness="2" Grid.Column="1" Grid.RowSpan="4" Margin="30">
+            <Image  />
+        </Border>
+        
+        <Separator Grid.Row="4" Grid.ColumnSpan="2" BorderBrush="White" BorderThickness="15"/>
+    </Grid>
+</metro:MetroWindow>

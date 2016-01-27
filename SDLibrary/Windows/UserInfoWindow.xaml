@@ -1,0 +1,20 @@
+﻿<Window x:Class="SmartDesk.UserInfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:SmartDesk"
+        xmlns:common="clr-namespace:SmartDesk.Controls"
+        Title="User Information Settings" Height="500" Width="600"
+        Background="WhiteSmoke" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" >
+    <Grid>
+        <Label Content="Edit School Information" FontSize="21" HorizontalAlignment="Left" Margin="21,30,0,0" VerticalAlignment="Top"/>
+        <common:LabelledTextBox Label="School Name: " x:Name="sch_name_label_txt" HorizontalAlignment="Left" Margin="21,75,0,0" VerticalAlignment="Top" Width="400" />
+        <common:LabelledTextBox Label="Address: " x:Name="sch_address_label_txt" HorizontalAlignment="Left" Margin="21,121,0,0" VerticalAlignment="Top" Width="400"/>
+        <common:LabelledTextBox  Label="Phone: " x:Name="sch_phone_label_txt" HorizontalAlignment="Left" Margin="21,168,0,0" VerticalAlignment="Top"  Width="400"/>
+        <common:LabelledTextBox  Label="Email: "  x:Name="sch_email_label_txt" HorizontalAlignment="Left" Margin="21,214,0,0" VerticalAlignment="Top" Width="400" />
+        <Image Name="logo_img" HorizontalAlignment="Left" Height="127" Margin="52,261,0,0" VerticalAlignment="Top" Width="148" />
+        <Button Content="Change Logo"  HorizontalAlignment="Right" Margin="0,0,269,132" VerticalAlignment="Bottom"  Width="93" Click="Button_Click_1"/>
+        <Button Content="Save"  HorizontalAlignment="Right" Margin="0,0,345,30" VerticalAlignment="Bottom"  Width="75" Click="Button_Click_2"/>
+        <Button Content="Close"  HorizontalAlignment="Right" Margin="0,0,188,30" VerticalAlignment="Bottom"  Width="75" Click="Button_Click"/>
+    </Grid>
+</Window>

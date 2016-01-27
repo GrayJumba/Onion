@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="AcademicsDesk.Pages.SummaryResults"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:MySQLHandler="clr-namespace:AcademicsDesk.MySQLHandler"
+             xmlns:charts="clr-namespace:De.TorstenMandelkow.MetroChart;assembly=De.TorstenMandelkow.MetroChart"
+             xmlns:common="clr-namespace:SmartDesk.Controls;assembly=SDLibrary"
+             xmlns:local="clr-namespace:AcademicsDesk.Controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Name="resultSlip_usercontrol" IsVisibleChanged="resultSlip_usercontrol_IsVisibleChanged"
+             xmlns:custom="clr-namespace:CustomControls;assembly=SDLibrary"
+             d:DesignHeight="300" d:DesignWidth="1000" Background="WhiteSmoke" >
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"  Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <common:ExtendedExamPicker Name="examPicker" Grid.Column="0" Margin="5,0"></common:ExtendedExamPicker>
+        </Grid>
+        <Grid x:Name="SummaryResultGrid" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <common:Header Grid.Row="0"/>
+            <ScrollViewer Grid.Row="1" >
+                <StackPanel>
+                    <DataGrid Name="marksDG" ColumnWidth="*" Margin="5" MinHeight="200"  ItemsSource="{Binding}"  AutoGenerateColumns="False" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" IsReadOnly="True" GridLinesVisibility="Horizontal"   >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Stream" Binding="{Binding stream}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Average" Binding="{Binding average}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Average Grade" Binding="{Binding grade}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Improvement" Binding="{Binding improvement}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Position In Class" Binding="{Binding class_position}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Position In School" Binding="{Binding school_position}"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <charts:ClusteredColumnChart Margin="10" Grid.Row="4 " Height="400"  Grid.Column="0" ChartTitle="School Performance Trend"  ChartSubTitle="Average mark against exams/terms" >
+                        <charts:ClusteredColumnChart.Series>
+                            <charts:ChartSeries  x:Name="trend_chart" SeriesTitle="Exam/Terms"  ItemsSource="{Binding}" DisplayMember="X" ValueMember="Y" />
+                        </charts:ClusteredColumnChart.Series>
+                    </charts:ClusteredColumnChart>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</UserControl>
