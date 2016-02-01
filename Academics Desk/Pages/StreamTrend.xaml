@@ -20,26 +20,31 @@
             </Grid.ColumnDefinitions>
             <common:ExtendedStreamPicker Name="stream_picker"></common:ExtendedStreamPicker>
         </Grid>
-        <Grid x:Name="StreamTrendGrid" Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <common:Header Grid.Row="0"/>
-            <ScrollViewer Grid.Row="1" >
-                <StackPanel>
-                    <charts:ClusteredColumnChart Margin="5,5,40,20" Height="500"  ChartTitle="Performance Trend"  ChartSubTitle="Average mark against Terms"   >
-                        <charts:ClusteredColumnChart.Series >
-                            <charts:ChartSeries x:Name="term_chart"  SeriesTitle="Terms" ItemsSource="{Binding Path=term_points}"  DisplayMember="X" ValueMember="Y"/>
-                        </charts:ClusteredColumnChart.Series>
-                    </charts:ClusteredColumnChart>
-                    <charts:ClusteredColumnChart Margin="5,5,40,20"  Height="500" ChartTitle="Performance Trend"  ChartSubTitle="Average mark against Exam"   >
-                        <charts:ClusteredColumnChart.Series >
-                            <charts:ChartSeries x:Name="exam_chart"  SeriesTitle="Exams" ItemsSource="{Binding Path=exam_points}" DisplayMember="X" ValueMember="Y"/>
-                        </charts:ClusteredColumnChart.Series>
-                    </charts:ClusteredColumnChart>
-                </StackPanel>
-            </ScrollViewer>
-        </Grid>
+        <ScrollViewer Grid.Row="1">
+            <Border BorderBrush="Teal" BorderThickness="3"  Width="21cm" Height="29.7cm" >
+
+                <Grid x:Name="StreamTrendGrid" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <common:Header Grid.Row="0"/>
+
+                    <StackPanel Grid.Row="1">
+                        <charts:ClusteredColumnChart Margin="5,5,40,20" Height="500"  ChartTitle="Performance Trend"  ChartSubTitle="Average mark against Terms"   >
+                            <charts:ClusteredColumnChart.Series >
+                                <charts:ChartSeries x:Name="term_chart"  SeriesTitle="Terms" ItemsSource="{Binding Path=term_points}"  DisplayMember="X" ValueMember="Y"/>
+                            </charts:ClusteredColumnChart.Series>
+                        </charts:ClusteredColumnChart>
+                        <charts:ClusteredColumnChart Margin="5,5,40,20"  Height="500" ChartTitle="Performance Trend"  ChartSubTitle="Average mark against Exam"   >
+                            <charts:ClusteredColumnChart.Series >
+                                <charts:ChartSeries x:Name="exam_chart"  SeriesTitle="Exams" ItemsSource="{Binding Path=exam_points}" DisplayMember="X" ValueMember="Y"/>
+                            </charts:ClusteredColumnChart.Series>
+                        </charts:ClusteredColumnChart>
+                    </StackPanel>
+                    <common:Footer  VerticalAlignment="Bottom" Grid.Row="2"/>
+                </Grid>
+            </Border>
+        </ScrollViewer>
     </Grid>
 </UserControl>

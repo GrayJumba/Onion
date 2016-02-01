@@ -24,75 +24,80 @@
             <common:ExtendedStudentPicker Name="extendedStudentPicker" Margin="5,0"></common:ExtendedStudentPicker>
             <common:ExamPicker Name="examPicker" Grid.Column="1" Margin="5,0"></common:ExamPicker>
         </Grid>
-        <Grid x:Name="ResultSlipGrid" Margin="10" Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <common:Header Grid.Row="0"/>
-            <ScrollViewer Grid.Row="1" >
+        <ScrollViewer Grid.Row="1">
+            <Border BorderBrush="Teal" BorderThickness="3"  Width="21cm" Height="29.7cm" >
+                <Grid x:Name="ResultSlipGrid" Margin="10"  >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="100"/>
+                    </Grid.RowDefinitions>
+                    <common:Header Grid.Row="0"/>
 
-                <StackPanel>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="3*"></ColumnDefinition>
-                            <ColumnDefinition Width="2*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"></RowDefinition>
-                            <RowDefinition Height="100"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        <DataGrid Name="resultsDg" ColumnWidth="*" ItemsSource="{Binding}" Margin="5,5,5,80"  AutoGenerateColumns="False" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" IsReadOnly="True" GridLinesVisibility="All"   >
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Subject" Binding="{Binding subject_abbrev}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Marks %" Binding="{Binding percentage}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Grade" Binding="{Binding grade_name}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Comment" Binding="{Binding comment}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Stream Pst" Binding="{Binding stream_position}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Class Pst" Binding="{Binding class_position}"></DataGridTextColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                        <charts:PieChart  Grid.Column="1" Margin="5,5,5,40"  ChartTitle="Subjects Distribution"  ChartSubTitle="Average mark Against Subjects">
-                            <charts:PieChart.Series>
-                                <charts:ChartSeries  x:Name="chart" SeriesTitle="Marks"  DisplayMember="X" ValueMember="Y"   ItemsSource="{Binding Path=points}" />
-                            </charts:PieChart.Series>
-                        </charts:PieChart>
-
-                        <Grid Grid.ColumnSpan="2" Grid.Row="2" Margin="10" DataContext="{Binding ElementName=resultSlip_usercontrol}">
-                            <Grid.Resources>
-                                <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
-                                    <Setter Property="IsReadOnly" Value="True"/>
-                                    <Setter Property="BorderThickness" Value="0"/>
-                                </Style>
-                            </Grid.Resources>
+                    <StackPanel Grid.Row="1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"></ColumnDefinition>
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="100"></RowDefinition>
                             </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <common:LabelledTextBox  Label="Average:"  Value="{Binding Path=Dt_Traversor[average]}"  Grid.Column="0" Grid.Row="0" Margin="10,5,0,5"></common:LabelledTextBox>
-                            <common:LabelledTextBox  Label="Average Grade:"  Value="{Binding Path=Dt_Traversor[average_grade]}"  Grid.Column="0" Grid.Row="1" Margin="5"></common:LabelledTextBox>
-                            <common:LabelledTextBox  Label="Aggregate Cluster Grade:"  Value="{Binding Path=Dt_Traversor[agg_cluster_grade]}"  Grid.Column="1" Grid.Row="0" Margin="5"></common:LabelledTextBox>
-                            <common:LabelledTextBox  Label="Comment:" Value="{Binding Path=Dt_Traversor[comment]}"  Grid.Column="1" Grid.Row="1" Margin="5"></common:LabelledTextBox>
-                            <common:LabelledTextBox  Label="Position in stream:"  Value="{Binding Path=Dt_Traversor[stream_position]}" Grid.Column="2" Grid.Row="0" Margin="5"></common:LabelledTextBox>
-                            <common:LabelledTextBox  Label="Position in class:"  Value="{Binding Path=Dt_Traversor[class_position]}" Grid.Column="2" Grid.Row="1" Margin="5"></common:LabelledTextBox>
-                            <common:LabelledTextBox  Label="Improvement:"  Value="{Binding Path=Dt_Traversor[improvement]}"  Grid.Column="3" Grid.Row="0" Margin="5"></common:LabelledTextBox>
-                            <common:LabelledTextBox  Label="KCPE improvement Index:"  Value="{Binding Path=Dt_Traversor[kcpe_improvement_index]}"  Grid.Column="3" Grid.Row="1" Margin="5"></common:LabelledTextBox>
+                            <DataGrid Name="resultsDg" ColumnWidth="*" ItemsSource="{Binding}" Margin="5,5,5,80"  AutoGenerateColumns="False" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" IsReadOnly="True" GridLinesVisibility="All"   >
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Subject" Binding="{Binding subject_abbrev}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Marks %" Binding="{Binding percentage}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Grade" Binding="{Binding grade_name}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Comment" Binding="{Binding comment}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Stream Pst" Binding="{Binding stream_position}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Class Pst" Binding="{Binding class_position}"></DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <charts:PieChart  Grid.Column="1" Margin="5,5,5,40"  ChartTitle="Subjects Distribution"  ChartSubTitle="Average mark Against Subjects">
+                                <charts:PieChart.Series>
+                                    <charts:ChartSeries  x:Name="chart" SeriesTitle="Marks"  DisplayMember="X" ValueMember="Y"   ItemsSource="{Binding Path=points}" />
+                                </charts:PieChart.Series>
+                            </charts:PieChart>
 
+                            <Grid Grid.ColumnSpan="2" Grid.Row="2" Margin="10" DataContext="{Binding ElementName=resultSlip_usercontrol}">
+                                <Grid.Resources>
+                                    <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+                                        <Setter Property="IsReadOnly" Value="True"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                    </Style>
+                                </Grid.Resources>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <common:LabelledTextBox  Label="Average:"  Value="{Binding Path=Dt_Traversor[average]}"  Grid.Column="0" Grid.Row="0" Margin="10,5,0,5"></common:LabelledTextBox>
+                                <common:LabelledTextBox  Label="Average Grade:"  Value="{Binding Path=Dt_Traversor[average_grade]}"  Grid.Column="0" Grid.Row="1" Margin="5"></common:LabelledTextBox>
+                                <common:LabelledTextBox  Label="Aggregate Cluster Grade:"  Value="{Binding Path=Dt_Traversor[agg_cluster_grade]}"  Grid.Column="1" Grid.Row="0" Margin="5"></common:LabelledTextBox>
+                                <common:LabelledTextBox  Label="Comment:" Value="{Binding Path=Dt_Traversor[comment]}"  Grid.Column="1" Grid.Row="1" Margin="5"></common:LabelledTextBox>
+                                <common:LabelledTextBox  Label="Position in stream:"  Value="{Binding Path=Dt_Traversor[stream_position]}" Grid.Column="2" Grid.Row="0" Margin="5"></common:LabelledTextBox>
+                                <common:LabelledTextBox  Label="Position in class:"  Value="{Binding Path=Dt_Traversor[class_position]}" Grid.Column="2" Grid.Row="1" Margin="5"></common:LabelledTextBox>
+                                <common:LabelledTextBox  Label="Improvement:"  Value="{Binding Path=Dt_Traversor[improvement]}"  Grid.Column="3" Grid.Row="0" Margin="5"></common:LabelledTextBox>
+                                <common:LabelledTextBox  Label="KCPE improvement Index:"  Value="{Binding Path=Dt_Traversor[kcpe_improvement_index]}"  Grid.Column="3" Grid.Row="1" Margin="5"></common:LabelledTextBox>
+
+                            </Grid>
                         </Grid>
-                    </Grid>
-                    <charts:ClusteredColumnChart Margin="10" Grid.Row="4 " Height="400"  Grid.Column="0" ChartTitle="Performance Trend"  ChartSubTitle="Average mark against exams" >
-                        <charts:ClusteredColumnChart.Series>
-                            <charts:ChartSeries  x:Name="exam_chart" SeriesTitle="Exams"  ItemsSource="{Binding}" DisplayMember="X" ValueMember="Y" />
-                        </charts:ClusteredColumnChart.Series>
-                    </charts:ClusteredColumnChart>
-                </StackPanel>
-            </ScrollViewer>
-        </Grid>
+                        <charts:ClusteredColumnChart Margin="10" Grid.Row="4 " Height="400"  Grid.Column="0" ChartTitle="Performance Trend"  ChartSubTitle="Average mark against exams" >
+                            <charts:ClusteredColumnChart.Series>
+                                <charts:ChartSeries  x:Name="exam_chart" SeriesTitle="Exams"  ItemsSource="{Binding}" DisplayMember="X" ValueMember="Y" />
+                            </charts:ClusteredColumnChart.Series>
+                        </charts:ClusteredColumnChart>
+                    </StackPanel>
+                    <common:Footer  VerticalAlignment="Bottom" Grid.Row="2"/>
+                </Grid>
+            </Border>
+        </ScrollViewer>
+
     </Grid>
 </UserControl>

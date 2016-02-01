@@ -10,7 +10,7 @@
              mc:Ignorable="d" 
              Name="resultSlip_usercontrol"
              xmlns:custom="clr-namespace:CustomControls;assembly=SDLibrary"
-             d:DesignHeight="300" d:DesignWidth="1000" Background="WhiteSmoke" IsVisibleChanged="resultSlip_usercontrol_IsVisibleChanged" >
+            d:DesignHeight="300" d:DesignWidth="1000"  Background="WhiteSmoke" IsVisibleChanged="resultSlip_usercontrol_IsVisibleChanged" >
 
     <Grid >
         <Grid.RowDefinitions>
@@ -26,25 +26,28 @@
             <common:ExtendedStreamPicker Name="stream_picker" Margin="5,0"></common:ExtendedStreamPicker>
             <common:ExtendedExamPicker Name="examPicker" Grid.Column="1" Margin="5,0"></common:ExtendedExamPicker>
         </Grid>
-        <Grid x:Name="AwardsGrid" Grid.Row="1">
+        <ScrollViewer Grid.Row="1">
+        <Border BorderBrush="Teal" BorderThickness="3"  Width="21cm" Height="29.7cm" >
+        <Grid x:Name="AwardsGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100"/>
                 <RowDefinition/>
+                <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
             <common:Header Grid.Row="0"/>
-            <ScrollViewer Grid.Row="1" >
-                <StackPanel>
-                    <custom:MultiComboBox />
+           
+                <StackPanel Grid.Row="1">
+           
                     <GroupBox Header="Top Students" MinHeight="200" Margin="20">
                         <DataGrid Name="topStudentsDg" ColumnWidth="*"  ItemsSource="{Binding}"  AutoGenerateColumns="False" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" IsReadOnly="True" GridLinesVisibility="Horizontal"   >
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Admno" Binding="{Binding admno}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Name" Binding="{Binding name}"></DataGridTextColumn>
+                                <DataGridTextColumn Width="1.5*" Header="Name" Binding="{Binding name}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Average %" Binding="{Binding average}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Grade" Binding="{Binding average_grade}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Aggr CLuster Grade" Binding="{Binding agg_cluster_grade}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Position In stream" Binding="{Binding stream_position}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Position In Class" Binding="{Binding class_position}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Stream Pos" Binding="{Binding stream_position}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Class Pos" Binding="{Binding class_position}"></DataGridTextColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                     </GroupBox>
@@ -72,7 +75,10 @@
                         </DataGrid>
                     </GroupBox>
                 </StackPanel>
-            </ScrollViewer>
+            <common:Footer  VerticalAlignment="Bottom" Grid.Row="2"/>
         </Grid>
+        </Border>
+        </ScrollViewer>
     </Grid>
+        
 </UserControl>

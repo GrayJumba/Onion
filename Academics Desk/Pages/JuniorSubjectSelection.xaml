@@ -33,10 +33,12 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="adm no" Binding="{Binding admno}" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Name" Binding="{Binding name}" IsReadOnly="True"/>
+                         
                             <DataGridCheckBoxColumn Header="Doing" Binding="{Binding doing}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
+                <CheckBox Content="Select All" HorizontalAlignment="Right" Width="112"  Grid.Row="0" VerticalAlignment="Top" Height="30" Margin="0,5,10,0"/>
             </Grid>
         </metro:MetroTabItem>
         <metro:MetroTabItem x:Name="SingleView" Header="Single">
@@ -64,5 +66,5 @@
             </Grid>
         </metro:MetroTabItem>
     </metro:MetroAnimatedTabControl>
-    
+
 </UserControl>

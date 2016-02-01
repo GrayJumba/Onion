@@ -21,125 +21,132 @@
             <common:ExtendedStudentPicker Name="student_picker" Margin="5"  Grid.Column="0"/>
             <common:TermPicker Name="term_picker" Margin="5" Grid.Column="1"></common:TermPicker>
         </Grid>
-        <Grid x:Name="ReportCard" Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <common:Header Grid.Row="0"/>
-            <ScrollViewer Grid.Row="1" >
-                <StackPanel>
-                    <Grid  ScrollViewer.CanContentScroll="True" >
-                        <Grid.Resources>
-                            <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
-                                <Setter Property="IsReadOnly" Value="True"/>
-                                <Setter Property="BorderThickness" Value="0"/>
-                            </Style>
-                            <Style  TargetType="RichTextBox">
-                                <Setter Property="BorderThickness" Value="0,0,0,1"/>
-                                <Setter Property="Width"  Value="180"/>
-                            </Style>
-                        </Grid.Resources>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="0"/>
-                            <RowDefinition Height="150"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="140"/>
-                            <RowDefinition Height="400"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="0"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <common:Header Margin="10" Grid.Row="0"  Grid.ColumnSpan="3"/>
-                        <GroupBox Margin="10" Header="Student Details" Grid.Row="1" Grid.ColumnSpan="3">
-                            <Grid DataContext="{Binding ElementName=report_card_usercontrol}">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="3*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="130"/>
-                                </Grid.ColumnDefinitions>
-                                <common:LabelledTextBox Margin="10" Height="30" Grid.Column="0" Label="Admno" Value="{Binding Dt_Traversor[admno]}"></common:LabelledTextBox>
-                                <common:LabelledTextBox Margin="10" Height="30" Grid.Column="1" Label="Name" Value="{Binding Dt_Traversor[name]}"></common:LabelledTextBox>
-                                <common:LabelledTextBox Margin="10" Height="30" Grid.Column="2" Label="KCPE" Value="{Binding Dt_Traversor[kcpe_mark]}"></common:LabelledTextBox>
-                                <Border  Margin="2" Grid.Column="3"   BorderBrush="LightBlue" BorderThickness="1" >
-                                    <Border.Background>
-                                        <ImageBrush  Stretch="UniformToFill" ></ImageBrush>
-                                    </Border.Background>
-                                    <Image Stretch="UniformToFill"   Name="student_image"  Source="{Binding Path=Dt_Traversor[image_filepath]}"  />
-                                </Border>
-                            </Grid>
-                        </GroupBox>
-                        <GroupBox Header="Exam Details"  Margin="10" Grid.Row="2"  Grid.ColumnSpan="3">
-                            <Grid>
-                                <DataGrid Name="marksDg1"  CanUserSortColumns="False" ColumnHeaderHeight="40"  ColumnWidth="*" MinHeight="230" 
-                                      GridLinesVisibility="All" AutoGenerateColumns="True" ItemsSource="{Binding}" IsReadOnly="True" AutoGeneratingColumn="marksDg1_AutoGeneratingColumn"/>
-                            </Grid>
-                        </GroupBox>
-                        <GroupBox Margin="10" Header="Summary" Grid.Row="3" Grid.ColumnSpan="3">
-                            <Grid  DataContext="{Binding ElementName=report_card_usercontrol}">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <common:LabelledTextBox Margin="10,5" Height="30" Grid.Column="0" Grid.Row="0"  Label="Average: " Value="{Binding Dt_Traversor[average]}"></common:LabelledTextBox>
-                                <common:LabelledTextBox Margin="10,5" Height="30" Grid.Column="1" Grid.Row="0"  Label="Average Grade: " Value="{Binding Dt_Traversor[average_grade]}"></common:LabelledTextBox>
-                                <common:LabelledTextBox Margin="10,5" Height="30" Grid.Column="2" Grid.Row="0"  Label="Aggregate Cluster Grade: " Value="{Binding Dt_Traversor[agg_cluster_grade]}"></common:LabelledTextBox>
-                                <common:LabelledTextBox Margin="10,5" Height="30" Grid.Column="3" Grid.Row="0"  Label="Comment: " Value="{Binding Dt_Traversor[comment]}"></common:LabelledTextBox>
-                                <common:LabelledTextBox Margin="10,5" Height="30" Grid.Column="0" Grid.Row="1"  Label="Stream Pos: " Value="{Binding Dt_Traversor[stream_position]}"></common:LabelledTextBox>
-                                <common:LabelledTextBox Margin="10,5" Height="30" Grid.Column="1" Grid.Row="1"  Label="Class Pos: " Value="{Binding Dt_Traversor[class_position]}"></common:LabelledTextBox>
-                                <common:LabelledTextBox Margin="10,5" Height="30" Grid.Column="2" Grid.Row="1"  Label="Improvement: " Value="{Binding Dt_Traversor[improvement]}"></common:LabelledTextBox>
-                                <common:LabelledTextBox Margin="10,5" Height="30" Grid.Column="3" Grid.Row="1"  Label="KCPE Improvement Index: " Value="{Binding Dt_Traversor[kcpe_improvement_index]}"></common:LabelledTextBox>
-                            </Grid>
-                        </GroupBox>
-                        <charts:ClusteredColumnChart Margin="10" Grid.Row="4 " Grid.Column="0" ChartTitle="Performance Trend"  ChartSubTitle="Average mark against terms" >
-                            <charts:ClusteredColumnChart.Series>
-                                <charts:ChartSeries  x:Name="term_chart" Height="300" Width="300" SeriesTitle="Terms"  ItemsSource="{Binding}" DisplayMember="X" ValueMember="Y" />
-                            </charts:ClusteredColumnChart.Series>
-                        </charts:ClusteredColumnChart>
-                        <charts:PieChart Margin="10" Grid.Row="4"  Grid.Column="1" ChartTitle="Subject Distribution"  ChartSubTitle="Mark against subject"  >
-                            <charts:PieChart.Series >
-                                <charts:ChartSeries x:Name="subject_chart"   Height="300" Width="300" SeriesTitle="Terms"   ItemsSource="{Binding}" DisplayMember="X" ValueMember="Y" />
-                            </charts:PieChart.Series>
-                        </charts:PieChart>
-                        <GroupBox Margin="20" Header="Comments"  Grid.Row="5" Grid.Column="0">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <RichTextBox  Width="300" Grid.Row="0" Margin="96,5,45,5"/>
-                                <Label  Grid.Row="0"    Content="ClassTeacher's"/>
-                                <RichTextBox Width="300"  Grid.Row="1" Margin="96,10,45,0"/>
-                                <Label  Grid.Row="1"    Content="Principal's"/>
-                            </Grid>
-                        </GroupBox>
+        <ScrollViewer Grid.Row="1">
+            <Border BorderBrush="Teal" BorderThickness="3"  Width="21cm"  >
+                <Grid x:Name="ReportCard">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition/>
+                        <RowDefinition Height="100"/>
+                    </Grid.RowDefinitions>
+                    <common:Header Grid.Row="0"/>
 
-                        <GroupBox Margin="20" Header="FEES" Grid.Row="5" Grid.Column="1">
-                            <Grid  DataContext="{Binding ElementName=report_card_usercontrol}">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <common:LabelledTextBox Margin="10" Height="30" Grid.Row="0" Label="Balance:              Ksh " Value="{Binding Dt_Traversor[fees_balance]}"></common:LabelledTextBox>
-                                <common:LabelledTextBox Margin="10" Height="30" Grid.Row="1" Label="Next Term Fees:  Ksh " Value="{Binding Dt_Traversor[next_term_fees]}"></common:LabelledTextBox>
-                                <common:LabelledTextBox Margin="10" Height="30" Grid.Row="2" Label="Total:                   Ksh " Value="{Binding Dt_Traversor[total_fees]}"></common:LabelledTextBox>
-                            </Grid>
-                        </GroupBox>
-                        <common:Footer Margin="10" Grid.Row="6" Grid.ColumnSpan="3"/>
-                    </Grid>
-                </StackPanel>
-            </ScrollViewer>
+                    <StackPanel Grid.Row="1">
+                        <Grid  ScrollViewer.CanContentScroll="True" >
+                            <Grid.Resources>
+                                <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+                                    <Setter Property="IsReadOnly" Value="True"/>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                </Style>
+                                <Style  TargetType="RichTextBox">
+                                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                                    <Setter Property="Width"  Value="180"/>
+                                </Style>
+                            </Grid.Resources>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0"/>
+                                <RowDefinition Height="150"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="140"/>
+                                <RowDefinition Height="400"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="0"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <common:Header Margin="10" Grid.Row="0"  Grid.ColumnSpan="3"/>
+                            <GroupBox Margin="10" Header="Student Details" Grid.Row="1" Grid.ColumnSpan="3">
+                                <Grid DataContext="{Binding ElementName=report_card_usercontrol}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="3*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="130"/>
+                                    </Grid.ColumnDefinitions>
+                                    <common:LabelledTextBox Margin="10" Height="30" Grid.Column="0" Label="Admno" Value="{Binding Dt_Traversor[admno]}"></common:LabelledTextBox>
+                                    <common:LabelledTextBox Margin="10" Height="30" Grid.Column="1" Label="Name" Value="{Binding Dt_Traversor[name]}"></common:LabelledTextBox>
+                                    <common:LabelledTextBox Margin="10" Height="30" Grid.Column="2" Label="KCPE" Value="{Binding Dt_Traversor[kcpe_mark]}"></common:LabelledTextBox>
+                                    <Border  Margin="2" Grid.Column="3"   BorderBrush="LightBlue" BorderThickness="1" >
+                                        <Border.Background>
+                                            <ImageBrush  Stretch="UniformToFill" ></ImageBrush>
+                                        </Border.Background>
+                                        <Image Stretch="UniformToFill"   Name="student_image"  Source="{Binding Path=Dt_Traversor[image_filepath]}"  />
+                                    </Border>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Header="Exam Details"  Margin="10" Grid.Row="2"  Grid.ColumnSpan="3">
+                                <Grid>
+                                    <DataGrid Name="marksDg1"   CanUserSortColumns="False" ColumnHeaderHeight="40"  ColumnWidth="*" MinHeight="230" 
+                                      GridLinesVisibility="All" AutoGenerateColumns="True" ItemsSource="{Binding}" IsReadOnly="True" AutoGeneratingColumn="marksDg1_AutoGeneratingColumn"/>
+                                </Grid>
+                            </GroupBox>
+                            <GroupBox Margin="10" Header="Summary" Grid.Row="3" Grid.ColumnSpan="3">
+                                <Grid  DataContext="{Binding ElementName=report_card_usercontrol}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <common:LabelledTextBox Margin="10,5" Height="30" Grid.Column="0" Grid.Row="0"  Label="Average: " Value="{Binding Dt_Traversor[average]}"></common:LabelledTextBox>
+                                    <common:LabelledTextBox Margin="10,5" Height="30" Grid.Column="1" Grid.Row="0"  Label="Average Grade: " Value="{Binding Dt_Traversor[average_grade]}"></common:LabelledTextBox>
+                                    <common:LabelledTextBox Margin="10,5" Height="30" Grid.Column="2" Grid.Row="0"  Label="Aggregate Cluster Grade: " Value="{Binding Dt_Traversor[agg_cluster_grade]}"></common:LabelledTextBox>
+                                    <common:LabelledTextBox Margin="10,5" Height="30" Grid.Column="3" Grid.Row="0"  Label="Comment: " Value="{Binding Dt_Traversor[comment]}"></common:LabelledTextBox>
+                                    <common:LabelledTextBox Margin="10,5" Height="30" Grid.Column="0" Grid.Row="1"  Label="Stream Pos: " Value="{Binding Dt_Traversor[stream_position]}"></common:LabelledTextBox>
+                                    <common:LabelledTextBox Margin="10,5" Height="30" Grid.Column="1" Grid.Row="1"  Label="Class Pos: " Value="{Binding Dt_Traversor[class_position]}"></common:LabelledTextBox>
+                                    <common:LabelledTextBox Margin="10,5" Height="30" Grid.Column="2" Grid.Row="1"  Label="Improvement: " Value="{Binding Dt_Traversor[improvement]}"></common:LabelledTextBox>
+                                    <common:LabelledTextBox Margin="10,5" Height="30" Grid.Column="3" Grid.Row="1"  Label="KCPE Improvement Index: " Value="{Binding Dt_Traversor[kcpe_improvement_index]}"></common:LabelledTextBox>
+                                </Grid>
+                            </GroupBox>
+                            <charts:ClusteredColumnChart Margin="10" Grid.Row="4 " Grid.Column="0" ChartTitle="Performance Trend"  ChartSubTitle="Average mark against terms" >
+                                <charts:ClusteredColumnChart.Series>
+                                    <charts:ChartSeries  x:Name="term_chart" Height="300" Width="300" SeriesTitle="Terms"  ItemsSource="{Binding}" DisplayMember="X" ValueMember="Y" />
+                                </charts:ClusteredColumnChart.Series>
+                            </charts:ClusteredColumnChart>
+                            <charts:PieChart Margin="10" Grid.Row="4"  Grid.Column="1" ChartTitle="Subject Distribution"  ChartSubTitle="Mark against subject"  >
+                                <charts:PieChart.Series >
+                                    <charts:ChartSeries x:Name="subject_chart"   Height="300" Width="300" SeriesTitle="Terms"   ItemsSource="{Binding}" DisplayMember="X" ValueMember="Y" />
+                                </charts:PieChart.Series>
+                            </charts:PieChart>
+                            <GroupBox Margin="20" Header="Comments"  Grid.Row="5" Grid.Column="0">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <RichTextBox  Width="300" Grid.Row="0" Margin="96,5,45,5"/>
+                                    <Label  Grid.Row="0"    Content="ClassTeacher's"/>
+                                    <RichTextBox Width="300"  Grid.Row="1" Margin="96,10,45,0"/>
+                                    <Label  Grid.Row="1"    Content="Principal's"/>
+                                </Grid>
+                            </GroupBox>
+
+                            <GroupBox Margin="20" Header="FEES" Grid.Row="5" Grid.Column="1">
+                                <Grid  DataContext="{Binding ElementName=report_card_usercontrol}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <common:LabelledTextBox Margin="10" Height="30" Grid.Row="0" Label="Balance:              Ksh " Value="{Binding Dt_Traversor[fees_balance]}"></common:LabelledTextBox>
+                                    <common:LabelledTextBox Margin="10" Height="30" Grid.Row="1" Label="Next Term Fees:  Ksh " Value="{Binding Dt_Traversor[next_term_fees]}"></common:LabelledTextBox>
+                                    <common:LabelledTextBox Margin="10" Height="30" Grid.Row="2" Label="Total:    Ksh " Value="{Binding Dt_Traversor[total_fees]}"></common:LabelledTextBox>
+                                </Grid>
+                            </GroupBox>
+                            
+                        </Grid>
+                    </StackPanel>
+                    <common:Footer  VerticalAlignment="Bottom" Grid.Row="2"/>
+
+                </Grid>
+            </Border>
+        </ScrollViewer>
         </Grid>
-    </Grid>
+  
 </UserControl>

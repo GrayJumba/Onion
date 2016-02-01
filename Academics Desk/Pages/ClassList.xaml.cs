@@ -61,11 +61,14 @@ namespace AcademicsDesk.Pages
 
         void PrintCommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
+            
             Printing.PrintGrid(classListDg,"");
+
         }
 
         void PrintCommandBinding_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
+
             if (MySQLHandler.ClassList.Default.Dt.Rows.Count == 0)
                 e.CanExecute = false;
             else e.CanExecute = true;

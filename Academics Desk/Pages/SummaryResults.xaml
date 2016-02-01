@@ -23,31 +23,36 @@
             </Grid.ColumnDefinitions>
             <common:ExtendedExamPicker Name="examPicker" Grid.Column="0" Margin="5,0"></common:ExtendedExamPicker>
         </Grid>
-        <Grid x:Name="SummaryResultGrid" Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <common:Header Grid.Row="0"/>
-            <ScrollViewer Grid.Row="1" >
-                <StackPanel>
-                    <DataGrid Name="marksDG" ColumnWidth="*" Margin="5" MinHeight="200"  ItemsSource="{Binding}"  AutoGenerateColumns="False" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" IsReadOnly="True" GridLinesVisibility="Horizontal"   >
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Stream" Binding="{Binding stream}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Average" Binding="{Binding average}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Average Grade" Binding="{Binding grade}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Improvement" Binding="{Binding improvement}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Position In Class" Binding="{Binding class_position}"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Position In School" Binding="{Binding school_position}"></DataGridTextColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                    <charts:ClusteredColumnChart Margin="10" Grid.Row="4 " Height="400"  Grid.Column="0" ChartTitle="School Performance Trend"  ChartSubTitle="Average mark against exams/terms" >
-                        <charts:ClusteredColumnChart.Series>
-                            <charts:ChartSeries  x:Name="trend_chart" SeriesTitle="Exam/Terms"  ItemsSource="{Binding}" DisplayMember="X" ValueMember="Y" />
-                        </charts:ClusteredColumnChart.Series>
-                    </charts:ClusteredColumnChart>
-                </StackPanel>
-            </ScrollViewer>
-        </Grid>
+
+        <ScrollViewer Grid.Row="1">
+            <Border BorderBrush="Teal" BorderThickness="3"  Width="21cm" Height="29.7cm" >
+
+                <Grid x:Name="SummaryResultGrid" Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <common:Header Grid.Row="0"/>
+                    <StackPanel Grid.Row="1">
+                        <DataGrid Name="marksDG" ColumnWidth="*" Margin="5" MinHeight="200"  ItemsSource="{Binding}"  AutoGenerateColumns="False" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" IsReadOnly="True" GridLinesVisibility="Horizontal"   >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Stream" Binding="{Binding stream}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Average" Binding="{Binding average}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Average Grade" Binding="{Binding grade}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Improvement" Binding="{Binding improvement}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Position In Class" Binding="{Binding class_position}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Position In School" Binding="{Binding school_position}"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <charts:ClusteredColumnChart Margin="10" Grid.Row="4 " Height="400"  Grid.Column="0" ChartTitle="School Performance Trend"  ChartSubTitle="Average mark against exams/terms" >
+                            <charts:ClusteredColumnChart.Series>
+                                <charts:ChartSeries  x:Name="trend_chart" SeriesTitle="Exam/Terms"  ItemsSource="{Binding}" DisplayMember="X" ValueMember="Y" />
+                            </charts:ClusteredColumnChart.Series>
+                        </charts:ClusteredColumnChart>
+                    </StackPanel>
+                    <common:Footer  VerticalAlignment="Bottom" Grid.Row="2"/>
+                </Grid>
+            </Border>
+        </ScrollViewer>
     </Grid>
 </UserControl>

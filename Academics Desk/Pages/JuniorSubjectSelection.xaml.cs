@@ -140,5 +140,10 @@ namespace AcademicsDesk.Pages
             DataRowView rowView = e.Row.Item as DataRowView;
             rowBeingEdited = rowView;
         }
+
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
