@@ -4,13 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300" Background="WhiteSmoke">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Separator Grid.Row="0" BorderBrush="DodgerBlue" BorderThickness="3"/>
-        <TextBlock Grid.Row="1"  FontSize="12" Foreground="DodgerBlue" HorizontalAlignment="Center" Text="Footer Content Here"/>     
+             d:DesignHeight="300" d:DesignWidth="300" Height="40" Background="WhiteSmoke">
+    <Grid Background="DarkGray">
+        <TextBlock Grid.Row="1"  FontSize="16"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="Onion Smart Solutions"/>     
     </Grid>
 </UserControl>

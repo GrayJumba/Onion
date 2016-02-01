@@ -35,6 +35,8 @@ namespace SmartDesk.Printing
             printDialog = new PrintDialog();
             //get selected printer capabilities
             PrintCapabilities capabilities = printDialog.PrintQueue.GetPrintCapabilities(printDialog.PrintTicket);
+            g.Height = Convert.ToDouble("29.7cm");
+            MessageBox.Show(g.Height+"");
             //get scale of the print wrt to screen of WPF visual
             double scale = Math.Min(capabilities.PageImageableArea.ExtentWidth / g.ActualWidth, capabilities.PageImageableArea.ExtentHeight /
             g.ActualHeight);
@@ -65,6 +67,7 @@ namespace SmartDesk.Printing
             //get selected printer capabilities
             PrintCapabilities capabilities = printDialog.PrintQueue.GetPrintCapabilities(printDialog.PrintTicket);
             //get scale of the print wrt to screen of WPF visual
+          
             double scale = Math.Min(capabilities.PageImageableArea.ExtentWidth / g.ActualWidth, capabilities.PageImageableArea.ExtentHeight /
             g.ActualHeight);
             //Transform the Visual to scale

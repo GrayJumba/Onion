@@ -41,6 +41,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\ref\Microsoft.reportviewer.winforms.dll</HintPath>
     </Reference>
+    <Reference Include="Mindscape.WpfElements, Version=7.0.34.23280, Culture=neutral, PublicKeyToken=0a92c4b7d9c14aa4, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=6.9.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\ref\MysqlBackUp\MySql.Data.dll</HintPath>
@@ -79,7 +80,11 @@
     <Compile Include="Onion\Strings.cs" />
     <Compile Include="Printing\Converter.cs" />
     <Compile Include="Printing\CustomDataGridDocumentPaginator.cs" />
+    <Compile Include="Printing\Print.cs" />
     <Compile Include="Printing\Printing.cs" />
+    <Compile Include="Templates\ReportCard.xaml.cs">
+      <DependentUpon>ReportCard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ExtendedExamPicker.xaml.cs">
       <DependentUpon>ExtendedExamPicker.xaml</DependentUpon>
     </Compile>
@@ -184,6 +189,7 @@
     <EmbeddedResource Include="Onion\DBCredentials.resx">
       <DependentUpon>DBCredentials.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Licenses.licx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -201,6 +207,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Resource>
+    <Page Include="Templates\ReportCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\ExtendedExamPicker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
