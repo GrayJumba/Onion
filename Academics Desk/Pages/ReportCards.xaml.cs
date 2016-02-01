@@ -88,7 +88,7 @@ namespace AcademicsDesk.Pages
         }
         private void PrintCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-               SmartDesk.Printing.Printing.PrintVisualWithoutDialog(ReportCard);
+               SmartDesk.Printing.Printing.PrintVisual(ReportCard);
            
         }
         private void PrintManyCommand_CanExecute(object sender, CanExecuteRoutedEventArgs e)
@@ -99,7 +99,7 @@ namespace AcademicsDesk.Pages
         private void PrintManyCommand_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             int count = student_picker.getNumberOfStudents();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < count; i++)
             {
                 SmartDesk.Printing.Printing.PrintVisualWithoutDialog(ReportCard);
                 Dt_Traversor.Next();
