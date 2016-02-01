@@ -67,6 +67,9 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>R.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MahApps.Metro, Version=0.14.0.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -203,9 +206,15 @@
     <Resource Include="numbers.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="BackGround\numbers.png">
+    <Resource Include="Images\numbers.png">
       <CustomToolNamespace>SDLibrary.Background</CustomToolNamespace>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\R.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="R.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

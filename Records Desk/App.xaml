@@ -6,9 +6,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/SDLibrary;component/Style/SDStyle.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Violet.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <SolidColorBrush x:Key="MainBrush" Color="#1976D2"/>
+            <SolidColorBrush x:Key="MainBrush" Color="BlueViolet"/>
             <sys:String  xmlns:sys="clr-namespace:System;assembly=mscorlib" x:Key="AppTitle">Records Desk</sys:String>
             <ImageBrush x:Key="MainBackGround" ImageSource="numbers.png"/>
         </ResourceDictionary>

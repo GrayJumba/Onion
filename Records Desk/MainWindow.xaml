@@ -8,7 +8,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"           
         Title="{StaticResource AppTitle}" WindowState="Maximized" Height="600" Width="1024"
-        mc:Ignorable="d" d:DesignWidth="1024" d:DesignHeight="700" Background="{StaticResource MainBackGround}" >
+        mc:Ignorable="d" d:DesignWidth="1024" d:DesignHeight="700" Background="{StaticResource MainBackGround}"  Icon="Images/R.png">
     <Grid>
     <DockPanel >
         <Grid  DockPanel.Dock="Top">
@@ -56,7 +56,7 @@
             </Menu>
         </Grid>
 
-        <Grid>
+            <Grid Background="BlueViolet" >
         
             
             <metro:MetroAnimatedTabControl Name="MainTabControl" TabStripPlacement="Left" BorderBrush="White">
