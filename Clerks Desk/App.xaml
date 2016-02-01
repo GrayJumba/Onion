@@ -7,11 +7,11 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/SDLibrary;component/Style/SDStyle.xaml"/>
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Green.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Brown.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <SolidColorBrush x:Key="MainBrush" Color="Green"/>
-            <SolidColorBrush x:Key="LightBrush" Color="#1000FF00 "/>
-            <ImageBrush x:Key="MainBackGround" ImageSource="BackGround/numbers.png"/>
+            <SolidColorBrush x:Key="MainBrush" Color="#663200"/>
+            <SolidColorBrush x:Key="LightBrush" Color="Transparent"/>
+            <ImageBrush x:Key="MainBackGround" ImageSource="Images/numbers.png"/>
             <sys:String xmlns:sys="clr-namespace:System;assembly=mscorlib" x:Key="AppTitle">Fees Desk</sys:String>
         </ResourceDictionary>
     </Application.Resources>

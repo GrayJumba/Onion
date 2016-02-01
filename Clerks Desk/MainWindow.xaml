@@ -5,12 +5,12 @@
         xmlns:SDControls="clr-namespace:SmartDesk.Controls;assembly=SDLibrary"          
         xmlns:local="clr-namespace:FeesDesk" Background="{StaticResource MainBackGround}"
         Title="{StaticResource AppTitle}" WindowState="Maximized" Height="600" Width="1024"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Icon="Images/F.png"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         mc:Ignorable="d" d:DesignWidth="1024" d:DesignHeight="700">
     <DockPanel>
         <Grid  DockPanel.Dock="Top">
-            <Menu  BorderBrush="WhiteSmoke" BorderThickness="2">
+            <Menu  BorderBrush="WhiteSmoke"  BorderThickness="2">
                 <Menu.Resources>
                     <ResourceDictionary Source="pack://application:,,,/SDLibrary;component/Style/SDMenu.xaml"/>
                 </Menu.Resources>
@@ -58,7 +58,7 @@
             </Menu>
         </Grid>
         <SDControls:SDStatusBar DockPanel.Dock="Bottom"></SDControls:SDStatusBar>
-        <Grid  Background="Transparent" >
+        <Grid  Background="#663200" >
             <metro:MetroAnimatedTabControl Name="MainTabControl" TabStripPlacement="Left" BorderBrush="White">
                 <metro:MetroTabItem Name="ReceiptsTab" Header="Receipts">
                     <local:Receipts/>
